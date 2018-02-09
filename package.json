@@ -2,11 +2,11 @@
   "name": "generator-aws-sam-typescript",
   "version": "0.0.0",
   "description": "Generates a project for creating a serverless application on AWS, using the AWS SAM methodology",
-  "homepage": "",
+  "homepage": "https://github.com/pha3l/generator-aws-sam-typescript",
   "author": {
     "name": "Luke Merry",
     "email": "lmerry@gmail.com",
-    "url": ""
+    "url": "https://github.com/pha3l"
   },
   "files": [
     "generators"
