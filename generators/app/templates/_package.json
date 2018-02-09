@@ -1,0 +1,20 @@
+{
+  "name": "<%= name %>",
+  "version": "<%= initialVersion %>",
+  "description": "<%= description %>",
+  "keywords": [],
+  "author": "<%= author %>",
+  "license": "<%= license %>",
+  "devDependencies": {
+    "@types/aws-lambda": "0.0.31",
+    "@types/node": "^9.4.1",
+    "ts-loader": "^3.4.0",
+    "typescript": "^2.7.1",
+    "webpack": "^3.10.0",
+    "zip-webpack-plugin": "^2.1.0"
+    <% if (installAWSSdk) {  %> , "aws-sdk": "^2.190.0" <% } %>
+  },
+  "dependencies": {
+
+  }
+}

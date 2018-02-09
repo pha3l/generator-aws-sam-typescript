@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "strict": false,
+    "lib": [
+      "dom",
+      "es2015.promise",
+      "es5",
+      "esnext.asynciterable"
+    ]
+  }
+}

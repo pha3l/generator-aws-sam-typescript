@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+Description: <%= description %>
+Resources:
+  HelloWorldSample:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./dist/helloworldsample/helloworldsample.zip
+      Handler: index.handler
+      Runtime: nodejs6.10
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /helloworld
+            Method: GET
