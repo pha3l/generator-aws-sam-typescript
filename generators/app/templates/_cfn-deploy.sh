@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 #TODO: add support for region, s3 bucket, stack-name, and clean up parsing the command.
 
 profile=""

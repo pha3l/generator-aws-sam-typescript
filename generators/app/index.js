@@ -1,31 +1,28 @@
-
-
 'use strict';
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
   prompting() {
     var done = this.async();
     // Have Yeoman greet the user.
-    this.log(yosay(
-      chalk.blue('AWS SAM') + ' ' + chalk.red('Typescript\n') + 'Project Generator'
-    ));
+    this.log(
+      yosay(chalk.blue('AWS SAM') + ' ' + chalk.red('Typescript\n') + 'Project Generator')
+    );
 
     const prompts = [
       {
         type: 'input',
         name: 'projectName',
         message: 'Project Name:',
-        default: this.appname
+        default: this.appname.replace(' ', '-')
       },
       {
         type: 'input',
         name: 'initialVersion',
         message: 'Initial Version:',
-        default: "0.1.0"
+        default: '0.1.0'
       },
       {
         type: 'input',
@@ -37,12 +34,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'license',
         message: 'Project License:',
-        choices: [
-          "MIT",
-          "BSD",
-          "GPL",
-          "ISC"
-        ]
+        choices: ['MIT', 'BSD', 'GPL', 'ISC']
       },
       {
         type: 'input',
@@ -55,7 +47,7 @@ module.exports = class extends Generator {
         name: 'installAWSSdk',
         message: 'Install aws-sdk library?',
         default: false
-      },
+      }
     ];
 
     this.prompt(prompts).then(props => {
@@ -65,11 +57,12 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.log("Copying Files...");
+    this.log('Copying Files...');
 
     this.fs.copyTpl(
-      this.templatePath('_package.json'),
-      this.destinationPath('package.json') , {
+      this.templatePath('_package.json.ejs'),
+      this.destinationPath('package.json'),
+      {
         name: this.props.projectName,
         initialVersion: this.props.initialVersion,
         description: this.props.description,
@@ -90,8 +83,9 @@ module.exports = class extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath('_template.yml'),
-      this.destinationPath('template.yml'), {
+      this.templatePath('_template.yml.ejs'),
+      this.destinationPath('template.yml'),
+      {
         description: this.props.description
       }
     );
@@ -101,19 +95,15 @@ module.exports = class extends Generator {
       this.destinationPath('src/helloworldsample.function.ts')
     );
 
-    this.fs.copy(
-      this.templatePath('_cfn-deploy.sh'),
-      this.destinationPath('cfn-deploy')
-    );
-
+    this.fs.copy(this.templatePath('_cfn-deploy.sh'), this.destinationPath('cfn-deploy'));
   }
 
   install() {
     this.installDependencies({
-      npm: true,
+      npm: { 'save-dev': true },
       bower: false
     }).then(() => {
-      "Project creation complete! Happy FaaSing!";
+      'Project creation complete! Happy FaaSing!';
     });
   }
 };
