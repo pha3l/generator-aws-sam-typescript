@@ -1,6 +1,6 @@
 {
   "name": "generator-aws-sam-typescript",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description":
     "Generates a project for creating a serverless application on AWS, using the AWS SAM methodology",
   "homepage": "https://github.com/pha3l/generator-aws-sam-typescript",
