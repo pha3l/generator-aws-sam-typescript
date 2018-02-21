@@ -16,7 +16,7 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'projectName',
         message: 'Project Name:',
-        default: this.appname.replace(' ', '-')
+        default: this.appname.replace(/\s/g, '-')
       },
       {
         type: 'input',
